@@ -1,0 +1,13 @@
+#!/usr/bin/sh
+#use strict;
+#use warnings;
+
+echo "Content-type: text/html\n\n";
+for i in ${*}; do
+	echo $i
+done
+echo "ENV VARIABLE STARTS <br>"
+
+env | while IFS='\n' read -r i; do
+   echo "$i<br>"
+done

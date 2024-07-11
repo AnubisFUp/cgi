@@ -1,0 +1,27 @@
+#!/bin/sh
+
+echo "Content-Type: text/html"
+echo ""
+
+read QUERY_STRING
+
+if [ -n "$QUERY_STRING" ]; then
+	#NAME=$(echo ) 
+    echo "$1"
+    echo "$2"
+    echo "-----------<br>"
+    echo "${*}"
+    echo "-----------<br>"
+    env
+    echo "-----------<br>"
+    
+else
+    echo "<html><body>"
+    echo "<form method='post' action='env2'>"
+    echo "  <label for='name'>Enter your name:</label>"
+    echo "  <input type='text' id='name' name='name'>"
+    echo "  <input type='passowrd' id='pass' name='pass'>"
+    echo "  <input type='submit' value='Submit'>"
+    echo "</form>"
+    echo "</body></html>"
+fi
