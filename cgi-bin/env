@@ -7,6 +7,7 @@ for i in ${*}; do
 	echo $i
 done
 echo "ENV VARIABLE STARTS <br>"
+sleep 10
 
 env | while IFS='\n' read -r i; do
    echo "$i<br>"
