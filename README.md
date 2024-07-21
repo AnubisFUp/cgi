@@ -126,3 +126,7 @@ srwx------ 1 www-data root 0 Jul 15 15:25 /var/run/cgid.sock.1
 
 fcgi спецификация - https://www.mit.edu/~yandros/doc/specs/fcgi-spec.html
 перевод - https://docs.google.com/document/d/1mPZXERcJ_ouG5H0ZDqP_Fg2NXgfUvHJOKCD8F61xf5w/edit
+
+
+# SCGI
+Сотреть папку scgi
