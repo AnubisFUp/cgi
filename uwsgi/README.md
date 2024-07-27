@@ -77,3 +77,39 @@ HTTP_USER_AGENT: curl/7.81.0
 HTTP_ACCEPT: */*
 Request body:
 ```
+
+## Ссылкi
+uwsgi source repo - https://github.com/unbit/uwsgi/tree/master
+uwsgi docs - https://uwsgi-docs.readthedocs.io/en/latest/index.html
+uwsgi FAQ - https://uwsgi-docs.readthedocs.io/en/latest/FAQ.html
+
+## Что такое этот ваш uWSGI
+Важно понимать, что есть uWSGI, а есть uwsgi
+uwsgi - протокол передачи запросов от веб-сервера к приложению
+uWSGI - сервер приложения, который менеджет коннекшены, запросы и прочее
+
+В uwsgi - по факту полноценный веб сервер (поддержку проксирования не чекал). Можно сравнить с spawn-fcgi бинарником, там правда функционал минимальный - создание форков приложения и все.
+А вот uWSGI Поддерживает слудующие функции
+* кучу протоколов типа http, https
+* разные ЯП
+* управление процессами: треды и форки
+* конфигурация через файлы
+* отдачу статических файлов тоже вроде поддерживает
+* логи
+* масштабирование 
+* и еще какие то фишки
+
+Вобщем выполняет функции обычного веб-сервера. Но не такой жесткий и надежный как nginx и проч.
+
+Можно позапускать примеры из этой директории (https://uwsgi-docs.readthedocs.io/en/latest/WSGIquickstart.html)
+```
+# запуск с протоколом uwsgi
+uwsgi --socket 127.0.0.1:3031 --wsgi-file foobar.py --master --processes 4 --threads 2 --stats 127.0.0.1:9191
+# запуск с прокси
+uwsgi --http :9090 --wsgi-file foobar.py --master --processes 4 --threads 2 --stats 127.0.0.1:9191
+# запуск с http протоколом
+uwsgi --http-socket 127.0.0.1:3031 --wsgi-file foobar.py --master --processes 4 --threads 2 --stats 127.0.0.1:9191
+
+# flask
+uwsgi --socket 127.0.0.1:3031 --wsgi-file myflaskapp.py --callable app --processes 4 --threads 2 --stats 127.0.0.1:9191
+```
